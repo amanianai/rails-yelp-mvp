@@ -1,0 +1,29 @@
+<div class="container pt-5">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category.upcase %></p>
+
+  <hr/>
+
+  <h5>Reviews</h5>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li>
+        <%= review.content %>
+        <%= review.rating %> stars
+        <%= link_to "Delete", review_path(review), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+
+
+  <p>
+    <%= link_to "Add review", new_restaurant_review_path(@restaurant) %>
+  </p>
+  <p>
+    <%= link_to 'Edit Restaurants', edit_restaurant_path(@restaurant) %> |
+    <%= link_to 'Back to Restaurants', restaurants_path %>
+  </p>
+
+</div>
